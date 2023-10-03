@@ -7,7 +7,7 @@ import java.util.HashMap;
 public class Test {
 
 	public static void main(String[] args) {
-		
+		System.out.println("java programming test");
 		System.out.println("java program");
 		String st="aabbbccccddd";
 		HashMap<Character, Integer>mp=new HashMap<>();
