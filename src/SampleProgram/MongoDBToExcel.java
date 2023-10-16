@@ -1,29 +1,33 @@
 package SampleProgram;
+import java.io.FileOutputStream;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.bson.Document;
+
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.bson.Document;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.io.FileOutputStream;
 
 
 public class MongoDBToExcel {
     public static void main(String[] args) {
-    	Logger logger = LoggerFactory.getLogger(MongoDBToExcel.class);
-        logger.info("This is how you configure Java Logging with SLF4J");
+		/*
+		 * Logger logger = LoggerFactory.getLogger(MongoDBToExcel.class);
+		 * logger.info("This is how you configure Java Logging with SLF4J");
+		 */
         // MongoDB connection parameters
-        String host = "localhost";
+        String host = "mongodb://localhost:27017";
         int port = 27017;
         String dbName = "admin";
         String collectionName = "Employee";
 
         // Excel file path
-        String excelFilePath = "C:\\Users\\Shankar\\ParaBlu\\Data.xlsx";
+        String excelFilePath = "mongodb_data.xlsx";
 
         try {
             // Connect to MongoDB
@@ -36,7 +40,7 @@ public class MongoDBToExcel {
 
             // Create an Excel workbook
             Workbook workbook = new XSSFWorkbook();
-            Sheet sheet = workbook.createSheet("Data");
+            Sheet sheet = workbook.createSheet(" MongoDB Data");
 
             // Create a header row
             Row headerRow = sheet.createRow(0);
